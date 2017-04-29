@@ -3,8 +3,8 @@ $(document).ready(onReady);
 function onReady(){
   $('#addItem').on('click', addListItem);
   getListItems();
-  $(document).on('click', '#completed-button', completeItem);
-  $(document).on('click', '#delete-button', deleteItem);
+  $(document).on('click', '.completed-button', completeItem);
+  $(document).on('click', '.delete-button', deleteItem);
 }
 
 function getListItems(){
@@ -16,7 +16,7 @@ function getListItems(){
       console.log('in getListItems: back from server-->', response);
       $('#list').empty();
       for (var i = 0; i < response.length; i++) {
-        $('#list').append('<div class="item" data-id='+response[i].id+'"><button id="completed-button">Completed!</button>'+response[i].item+'<span></span><button id="delete-button">Delete Item</button></div>');
+        $('#list').append('<div class="item" data-id='+response[i].id+'><button class="completed-button">Completed!</button>'+response[i].item+'<span></span><button class="delete-button">Delete Item</button></div>');
       }
     }  //end success
   });  //end ajax
@@ -47,4 +47,19 @@ function deleteItem(){
 
 function completeItem(){
   console.log('completed button clicked');
-}
+  var id = $(this).parent().data('id');
+  console.log('id:',id);
+  var idToSend = {
+    listId: id,
+  };
+  console.log('idToSend:', idToSend);
+  $.ajax({
+    type: 'POST',
+    url:'/completeItem/',
+    data: idToSend,
+    success: function(response){
+      console.log('response is-->',response);
+      console.log('completed-button for id clicked');
+    }  // end success
+  });  // end ajax
+}  // end completeItem

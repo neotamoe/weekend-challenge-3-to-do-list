@@ -21,10 +21,10 @@ span{
   margin-right: 25px;
 }
 
-#deleted-button{
+.deleted-button{
   text-align: right;
 }
 
-#completed-button{
+.completed-button{
   margin-right: 15px;
 }

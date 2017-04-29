@@ -84,3 +84,25 @@ app.post ('/addListItem', function (req, res){
     } // end else
   }); //end pool
 }); //end addListItem post
+
+app.post('/completeItem/', function(req, res) {
+  console.log('in POST completeItem');
+  console.log('req.body ->', req.body.listId);
+  pool.connect( function( err, connection, done ){
+    //check if there was an error
+    if( err ){
+      console.log( err );
+      // respond with error code 400
+      res.send( 400 );
+    }// end error
+    else{
+      console.log('connected to db');
+      //query to write this list item (req.body) to db
+      connection.query( "UPDATE list SET complete=true where id=$1", [req.body.listId]);
+      // close connection
+      done();
+      // res.send
+      res.sendStatus(200);
+    } // end else
+  }); //end pool
+});
