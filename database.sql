@@ -1,0 +1,5 @@
+CREATE TABLE list (
+    id SERIAL PRIMARY KEY NOT NULL,
+    item VARCHAR(140) UNIQUE,
+    complete BOOLEAN DEFAULT false
+);

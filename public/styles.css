@@ -1,0 +1,30 @@
+h1, h2{
+  color: cadetBlue;
+}
+
+h2{
+  font-style: italic;
+}
+
+.item{
+  border: solid 1px green;
+  padding: 5px;
+  margin: 5px;
+}
+
+#input{
+  margin-bottom: 25px;
+  margin-top: 25px
+}
+
+span{
+  margin-right: 25px;
+}
+
+#deleted-button{
+  text-align: right;
+}
+
+#completed-button{
+  margin-right: 15px;
+}
