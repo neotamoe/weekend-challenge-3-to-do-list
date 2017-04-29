@@ -43,6 +43,22 @@ function addListItem(){
 
 function deleteItem(){
   console.log('delete item button clicked');
+  var id = $(this).parent().data('id');
+  console.log('id:',id);
+  var idToSend = {
+    listId: id,
+  };
+  console.log('idToSend:', idToSend);
+  $.ajax({
+    type: 'DELETE',
+    url:'/deleteItem/',
+    data: idToSend,
+    success: function(response){
+      console.log('response is-->',response);
+      console.log('delete-button for id clicked');
+      getListItems();
+    }  // end success
+  });  // end ajax
 }
 
 function completeItem(){
