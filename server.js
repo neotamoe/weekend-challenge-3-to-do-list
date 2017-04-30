@@ -33,6 +33,7 @@ app.get ('/getListItems', function (req, res){
   console.log('hit get ListItems');
   // array of listItems
   var allListItems = [];
+  var completedItems = [];
   // connect to db
   pool.connect( function( err, connection, done ){
     //check if error

@@ -1,6 +1,7 @@
 #notebook{
   margin-left: 25px;
   margin-right: 25px;
+  width: 820px;
 }
 
 h1{
@@ -28,8 +29,24 @@ body{
   border-top: solid 1px lightblue;
 }
 
-#input, #list{
+#input, #list, p{
   font-size: 24px;
+}
+
+p{
+  border-bottom: solid 1px lightblue;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#to-do{
+  /*color: red;*/
+}
+
+#done{
+  color: green;
 }
 
 .response{

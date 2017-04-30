@@ -15,9 +15,10 @@ function getListItems(){
     success: function(response){
       console.log('in getListItems: back from server-->', response);
       $('#list').empty();
+      $('#completed-items').empty();
       for (var i = 0; i < response.length; i++) {
         if(response[i].complete===true){
-          $('#list').append('<div class="item complete" data-id='+response[i].id+'><span class="checkmark"><img id="checkmark-image" src="/checkmark.png"/></span><span class="response">'+response[i].item+'</span><button class="delete-button">Delete</button></div>');
+          $('#completed-items').append('<div class="item complete" data-id='+response[i].id+'><span class="checkmark"><img id="checkmark-image" src="/checkmark.png"/></span><span class="response">'+response[i].item+'</span><button class="delete-button">Delete</button></div>');
         } else{
           $('#list').append('<div class="item" data-id='+response[i].id+'><span class="button-span"><button class="completed-button">Completed!</button></span><span class="response">'+response[i].item+'</span><button class="delete-button">Delete</button></div>');
         }  // end else
@@ -85,6 +86,7 @@ function completeItem(){
     data: idToSend,
     success: function(response){
       console.log('response from server is-->',response);
+      getListItems();
     }  // end success
   });  // end ajax POST
 }  // end completeItem
