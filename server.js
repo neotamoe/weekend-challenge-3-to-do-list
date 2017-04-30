@@ -28,7 +28,7 @@ app.listen(3030, function(){
 });
 
 // ROUTES
-//getListItems route
+// getListItems route
 app.get ('/getListItems', function (req, res){
   console.log('hit get ListItems');
   // array of listItems
@@ -43,7 +43,7 @@ app.get ('/getListItems', function (req, res){
     }// end error
     else{
       console.log('connected to db');
-      // send query for all list items in table ('list') and hold in variable ('resultSet')
+      // send query for all list items in table ('list') and hold in var=resultSet
       var resultSet = connection.query( "SELECT * from list" );
       // convert each row into an object in the allListItems array
       // on each row, push the row into allListItems
@@ -59,7 +59,7 @@ app.get ('/getListItems', function (req, res){
       }); //end on end function
     } // end else
   }); //end pool
-}); //end get listItems
+}); //end getListItems GET
 
 // addListItem route
 app.post ('/addListItem', function (req, res){
@@ -83,7 +83,7 @@ app.post ('/addListItem', function (req, res){
       res.sendStatus(200);
     } // end else
   }); //end pool
-}); //end addListItem post
+}); //end addListItem POST
 
 app.post('/completeItem/', function(req, res) {
   console.log('in POST completeItem');
@@ -105,7 +105,7 @@ app.post('/completeItem/', function(req, res) {
       res.sendStatus(200);
     } // end else
   }); //end pool
-});
+});  // end completeItem POST
 
 app.delete('/deleteItem/', function(req, res) {
   console.log('in DELETE deleteItem route');
@@ -126,5 +126,5 @@ app.delete('/deleteItem/', function(req, res) {
       // res.send
       res.sendStatus(200);
     } // end else
-  }); //end pool
-});
+  }); // end pool
+});  // end deleteItem DELETE
