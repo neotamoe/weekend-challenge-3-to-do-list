@@ -33,16 +33,12 @@ body{
   font-size: 24px;
 }
 
-p{
+.subheading{
   border-bottom: solid 1px lightblue;
   padding-bottom: 5px;
   padding-top: 5px;
   margin-top: 0px;
   margin-bottom: 10px;
-}
-
-#to-do{
-  /*color: red;*/
 }
 
 #done{
@@ -89,7 +85,7 @@ button{
 }
 
 footer p{
-  margin-top: 150px;
+  margin-top: 50px;
   margin-left: 650px;
   font-size: 14px;
 }
