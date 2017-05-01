@@ -42,15 +42,15 @@ app.get ('/getListItems', function (req, res){
     }// end error
     else{
       console.log('connected to db');
-      // send query for all items in table ('list') and hold in var=resultSet
-      var resultSet = connection.query( "SELECT * from list" );
+      // send query for all items in table ('list') and hold in var=queryResults
+      var queryResults = connection.query( "SELECT * from list" );
       // convert each row into an object allListItems array
       // on each row, push the row into allListItems
-      resultSet.on( 'row', function( row ){
+      queryResults.on( 'row', function( row ){
         allListItems.push( row );
       }); // end on row push
       // on end of query, send array of list items as response
-      resultSet.on( 'end', function(){
+      queryResults.on( 'end', function(){
         // close connection
         done();
         // send back array of list items
