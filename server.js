@@ -74,10 +74,11 @@ app.post ('/addListItem', function (req, res){
     else{
       console.log('connected to db');
       //query to write new list item (req.body) to db
-      connection.query( "INSERT INTO list (item) VALUES($1)", [req.body.item]);
-      // close connection and send status
-      done();
-      res.sendStatus(200);
+      connection.query( "INSERT INTO list (item) VALUES($1)", [req.body.item], function(){
+        // close connection and send status
+        done();
+        res.sendStatus(200);
+      });
     } // end else
   }); //end pool
 }); //end addListItem POST
@@ -94,10 +95,11 @@ app.post('/completeItem/', function(req, res) {
     else{
       console.log('connected to db');
       //query to write this list item (req.body) to db
-      connection.query( "UPDATE list SET complete=true where id=$1", [req.body.listId]);
-      // close connection and send success status
-      done();
-      res.sendStatus(200);
+      connection.query( "UPDATE list SET complete=true where id=$1", [req.body.listId], function(){
+        // close connection and send success status
+        done();
+        res.sendStatus(200);
+      });
     } // end else
   }); //end pool
 });  // end completeItem POST
@@ -112,10 +114,11 @@ app.delete('/deleteItem/', function(req, res) {
     else{
       console.log('connected to db');
       //query to write this list item (req.body) to db
-      connection.query( "DELETE from list where id=$1", [req.body.listId]);
-      // close connection and send success status code 200
-      done();
-      res.sendStatus(200);
+      connection.query( "DELETE from list where id=$1", [req.body.listId], function(){
+        // close connection and send success status code 200
+        done();
+        res.sendStatus(200);
+      });
     } // end else
   }); // end pool
 });  // end deleteItem DELETE
